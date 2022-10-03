@@ -7,12 +7,21 @@ let order = [
   { itemName: "Hash Brown", quantity: 4, unitPrice: 0.4 },
 ];
 
+let quantityCalculation = (q, p) => q * p;
+
 let total = 0;
 console.log(`QTY    ITEM    TOTAL`);
 order.forEach(({ itemName, quantity, unitPrice }) => {
-  total = total + unitPrice;
+  if (quantity > 1) {
+    total = total + unitPrice * quantity;
+  } else {
+    total = total + unitPrice;
+  }
+  let productTotal = unitPrice * quantity;
 
-  console.log(`${quantity}    ${itemName}   ${unitPrice.toFixed(2)}`);
+  console.log(
+    `${quantity}    ${itemName}   ${productTotal.toFixed(2)}`
+  );
 });
 console.log(`
 Total: ${total}
